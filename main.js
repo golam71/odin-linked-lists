@@ -138,7 +138,7 @@ class LinkedList {
 
     while (currentIndex !== index) {
       currentNode = currentNode.nextNode;
-      let laterNode = currentIndex.nextNode.nextNode;
+      let laterNode = currentNode.nextNode.nextNode;
       if (currentIndex === index) {
         currentIndex.nextNode = newNode;
         newNode.nextNode = laterNode;
