@@ -126,7 +126,7 @@ class LinkedList {
     return string;
   }
 
-  inertAt(value, index) {
+  insertAt(value, index) {
     let newNode = new Node(value);
     let currentNode = this.headNode;
     let currentIndex = 0;
@@ -134,16 +134,16 @@ class LinkedList {
     if (index == 0) {
       newNode.nextNode = this.headNode;
       this.headNode = newNode;
+      return;
     }
 
-    while (currentIndex !== index) {
+    while (currentIndex !== index - 1) {
       currentNode = currentNode.nextNode;
-      let laterNode = currentNode.nextNode.nextNode;
-      if (currentIndex === index) {
-        currentIndex.nextNode = newNode;
-        newNode.nextNode = laterNode;
-      }
       currentIndex++;
     }
+
+    let laterNode = currentNode.nextNode;
+    currentNode.nextNode = newNode;
+    newNode.nextNode = laterNode;
   }
 }
