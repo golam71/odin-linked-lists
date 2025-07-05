@@ -1,71 +1,41 @@
+import { Node } from "./node.js";
+
 class LinkedList {
   constructor() {
-    this.list = [];
+    this.headNode = null;
   }
-
   append(value) {
-    this.list.push(value);
-  }
+    let newNode = new Node(value);
 
-  prepend(value) {
-    this.list.unshift(value);
-  }
-
-  size() {
-    return this.list.length;
-  }
-
-  head() {
-    return this.list[0];
-  }
-
-  tail() {
-    return this.list.at(-1);
-  }
-
-  at(index) {
-    return this.list.at(index);
-  }
-
-  pop() {
-    return this.list.pop();
-  }
-
-  contains(value) {
-    return this.list.includes(value);
-  }
-
-  find(value) {
-    return this.list.indexOf(value);
-  }
-
-  toString() {
-    let string = "";
-    for (const item of this.list) {
-      string += `( ${item} ) -> `;
+    if (!this.headNode) {
+      this.headNode = newNode;
+      return;
     }
-    string += "null";
-    return string;
+    let currentNode = this.headNode;
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode;
+    }
+    currentNode.nextNode = newNode;
+  }
+  prepend(value) {
+    let newNode = new Node(value);
+    if (!this.headNode) {
+      this.headNode = newNode;
+      return;
+    }
+    newNode.nextNode = this.headNode;
+    this.headNode = newNode;
+  }
+  size() {
+    let length = 0;
+    if (!this.headNode) {
+      return length;
+    }
+    let currentNode = this.headNode;
+    while (currentNode.nextNode !== null) {
+      length++;
+      currentNode = currentNode.nextNode;
+    }
+    return length;
   }
 }
-
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-console.log("toString:", list.toString());
-console.log("size:", list.size());
-console.log("head:", list.head());
-console.log("tail:", list.tail());
-console.log("at(2):", list.at(2));
-console.log("contains('cat'):", list.contains("cat"));
-console.log("find('parrot'):", list.find("parrot"));
-console.log("pop:", list.pop());
-console.log("toString after pop:", list.toString());
-list.prepend("rabbit");
-console.log("toString after prepend:", list.toString());
