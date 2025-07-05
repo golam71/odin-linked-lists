@@ -125,4 +125,25 @@ class LinkedList {
     string += "null";
     return string;
   }
+
+  inertAt(value, index) {
+    let newNode = new Node(value);
+    let currentNode = this.headNode;
+    let currentIndex = 0;
+
+    if (index == 0) {
+      newNode.nextNode = this.headNode;
+      this.headNode = newNode;
+    }
+
+    while (currentIndex !== index) {
+      currentNode = currentNode.nextNode;
+      let laterNode = currentIndex.nextNode.nextNode;
+      if (currentIndex === index) {
+        currentIndex.nextNode = newNode;
+        newNode.nextNode = laterNode;
+      }
+      currentIndex++;
+    }
+  }
 }
