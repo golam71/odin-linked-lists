@@ -58,4 +58,14 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-console.log(list.toString());
+console.log("toString:", list.toString());
+console.log("size:", list.size());
+console.log("head:", list.head());
+console.log("tail:", list.tail());
+console.log("at(2):", list.at(2));
+console.log("contains('cat'):", list.contains("cat"));
+console.log("find('parrot'):", list.find("parrot"));
+console.log("pop:", list.pop());
+console.log("toString after pop:", list.toString());
+list.prepend("rabbit");
+console.log("toString after prepend:", list.toString());
