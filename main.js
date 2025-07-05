@@ -81,5 +81,32 @@ class LinkedList {
     }
     currentNode.nextNode = null;
   }
-
+  contains(value) {
+    if (!this.headNode) {
+      return null;
+    }
+    let currentNode = this.headNode;
+    while (currentNode.nextNode !== null) {
+      if (currentNode.value == value) {
+        return true;
+      }
+      currentNode.value = currentNode.nextNode;
+    }
+    return false;
+  }
+  find(value) {
+    if (!this.headNode) {
+      return null;
+    }
+    let currentNode = this.headNode;
+    let index = 0;
+    while (currentNode.nextNode !== null) {
+      if (currentNode.value == value) {
+        return index;
+      }
+      currentNode = currentNode.nextNode;
+      index++;
+    }
+    return null;
+  }
 }
