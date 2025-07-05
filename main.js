@@ -38,4 +38,35 @@ class LinkedList {
     }
     return length;
   }
+  head() {
+    if (!this.headNode) {
+      return null;
+    }
+    return this.headNode;
+  }
+  tail() {
+    if (!this.headNode) return null;
+    let currentNode = this.headNode;
+
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode;
+    }
+    return currentNode;
+  }
+  at(index) {
+    if (!this.headNode) return null;
+
+    let currentNode = this.headNode;
+    let currentIndex = 0;
+
+    while (currentNode !== null) {
+      if (currentIndex === index) {
+        return currentNode;
+      }
+      currentNode = currentNode.nextNode;
+      currentIndex++;
+    }
+
+    return null;
+  }
 }
