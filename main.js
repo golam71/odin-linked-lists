@@ -17,6 +17,7 @@ class LinkedList {
     }
     currentNode.nextNode = newNode;
   }
+
   prepend(value) {
     let newNode = new Node(value);
     if (!this.headNode) {
@@ -28,22 +29,22 @@ class LinkedList {
   }
   size() {
     let length = 0;
-    if (!this.headNode) {
-      return length;
-    }
     let currentNode = this.headNode;
-    while (currentNode.nextNode !== null) {
+
+    while (currentNode !== null) {
       length++;
       currentNode = currentNode.nextNode;
     }
     return length;
   }
+
   head() {
     if (!this.headNode) {
       return null;
     }
     return this.headNode;
   }
+
   tail() {
     if (!this.headNode) return null;
     let currentNode = this.headNode;
@@ -53,6 +54,7 @@ class LinkedList {
     }
     return currentNode;
   }
+
   at(index) {
     if (!this.headNode) return null;
 
@@ -69,6 +71,7 @@ class LinkedList {
 
     return null;
   }
+
   pop() {
     if (!this.headNode) return null;
     if (!this.headNode.nextNode) {
@@ -81,26 +84,28 @@ class LinkedList {
     }
     currentNode.nextNode = null;
   }
+
   contains(value) {
     if (!this.headNode) {
-      return null;
+      return false;
     }
     let currentNode = this.headNode;
-    while (currentNode.nextNode !== null) {
+    while (currentNode !== null) {
       if (currentNode.value == value) {
         return true;
       }
-      currentNode.value = currentNode.nextNode;
+      currentNode = currentNode.nextNode;
     }
     return false;
   }
+
   find(value) {
     if (!this.headNode) {
       return null;
     }
     let currentNode = this.headNode;
     let index = 0;
-    while (currentNode.nextNode !== null) {
+    while (currentNode !== null) {
       if (currentNode.value == value) {
         return index;
       }
@@ -108,5 +113,16 @@ class LinkedList {
       index++;
     }
     return null;
+  }
+
+  toString() {
+    let currentNode = this.headNode;
+    let string = "";
+    while (currentNode !== null) {
+      string += `( ${currentNode.value} ) --> `;
+      currentNode = currentNode.nextNode;
+    }
+    string += "null";
+    return string;
   }
 }
